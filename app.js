@@ -17,6 +17,7 @@ function updateDisplay() {
 
   cells.forEach((value, index) => {
     tiles[index].textContent = value || "";
+    tiles[index].setAttribute("data-value", value);
   });
 }
 

@@ -22,7 +22,7 @@ body {
   gap: 5px;
   padding: 10px;
   border-radius: 10px;
-  background: #433;
+  background: rgb(45, 45, 45);
 }
 
 .cell {
@@ -31,7 +31,41 @@ body {
   align-items: center;
   width: 100px;
   height: 100px;
-  background: #343;
+  background: rgb(40, 40, 40);
   font-size: 35px;
   font-weight: bold;
+}
+
+.cell[data-value="2"] {
+  background: rgb(57, 134, 211);
+}
+.cell[data-value="4"] {
+  background: rgb(211, 46, 233);
+}
+.cell[data-value="8"] {
+  background: rgb(23, 233, 215);
+}
+.cell[data-value="16"] {
+  background: rgb(7, 136, 97);
+}
+.cell[data-value="32"] {
+  background: rgb(212, 85, 27);
+}
+.cell[data-value="64"] {
+  background: rgb(212, 38, 119);
+}
+.cell[data-value="128"] {
+  background: rgb(150, 13, 13);
+}
+.cell[data-value="255"] {
+  background: rgb(102, 101, 26);
+}
+.cell[data-value="512"] {
+  background: rgb(14, 109, 14);
+}
+.cell[data-value="1024"] {
+  background: rgb(16, 17, 100);
+}
+.cell[data-value="2048"] {
+  background: rgb(244, 248, 29);
 }
