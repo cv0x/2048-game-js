@@ -1,5 +1,7 @@
 const board = document.getElementById("board");
 
+let cells = Array(16).fill(0);
+
 function initGrid(params) {
   board.innerHTML = "";
 
@@ -10,4 +12,30 @@ function initGrid(params) {
   }
 }
 
+function updateDisplay() {
+  const tiles = document.querySelectorAll(".cell");
+
+  cells.forEach((value, index) => {
+    tiles[index].textContent = value || "";
+  });
+}
+
+function addNewTile() {
+  const emptyCells = cells.reduce((acc, cell, index) => {
+    if (cell === 0) acc.push(index);
+
+    return acc;
+  }, []);
+
+  if (emptyCells.length > 0) {
+    const randomCellIndex =
+      emptyCells[Math.floor(Math.random() * emptyCells.length)];
+
+    cells[randomCellIndex] = Math.random() < 0.9 ? 2 : 4;
+  }
+}
+
 initGrid();
+addNewTile();
+addNewTile();
+updateDisplay();
