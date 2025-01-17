@@ -8,16 +8,21 @@
     <title>2048</title>
 </head>
 <body>
-    <div class="music">
+    <div class="top-menu">
         <button id="music-btn-play"><i class='bx bx-play-circle'></i>Music</button>
         <button class="hidden" id="music-btn-pause"><i class='bx bx-pause-circle' ></i>Music</button>
+    
+        <div class="leaderboard">
+        <button id="leaderboard-btn"><i class='bx bx-list-ol'></i>Leaderboard</button>
+        </div>
     </div>
 
     <audio id="backgroundMusic" loop>
     <source src="music/jpn lofi 1.mp3" type="audio/mpeg">
-    Váš prohlížeč nepodporuje přehrávání zvuku.
+    Your browser does not support audio playback.
   </audio>
-
+    <h1 class="title">2048</h1>
+    <div class="timer">Time round: <span id="timer">0:00</span></div>
     <div class="score">Score: <span id="score">0</span></div>
     <div class="board" id="board">
     </div>
@@ -25,7 +30,7 @@
             <h1>GAME OVER!</h1>
             <button class="restart-btn" onclick="restartGame()"> Restart</button>
         </div>
-    <div class="controls">Use arrow keys</div>
+    <div class="controls">Use <i class='bx bxs-up-arrow-alt'></i><i class='bx bxs-down-arrow-alt'></i><i class='bx bxs-left-arrow-alt'></i><i class='bx bxs-right-arrow-alt'></i> to move tiles</div>
     
 <script src="app.js"></script>
 </body>

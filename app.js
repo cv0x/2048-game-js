@@ -2,6 +2,8 @@ const board = document.getElementById("board");
 const score = document.getElementById("score");
 const gameOver = document.getElementById("gameOver");
 
+const timerElement = document.getElementById("timer");
+
 const playMusic = document.getElementById("music-btn-play");
 const pauseMusic = document.getElementById("music-btn-pause");
 const backgroundMusic = document.getElementById("backgroundMusic");
@@ -9,6 +11,10 @@ const backgroundMusic = document.getElementById("backgroundMusic");
 let cells = Array(16).fill(0);
 let scoreValue = 0;
 let gameRunning = true;
+
+let timerInterval = null;
+let timeElapsed = 0;
+let timerStarted = false;
 
 function initGrid(params) {
   board.innerHTML = "";
@@ -76,10 +82,14 @@ function restartGame() {
   gameRunning = true;
   scoreValue = 0;
   cells = Array(16).fill(0);
+  timeElapsed = 0;
+  timerStarted = false;
+  clearInterval(timerInterval);
 
   //reset ui
   gameOver.style.display = "none";
   score.textContent = "0";
+  timerElement.textContent = "0:00";
   initGrid();
   addNewTile();
   addNewTile();
@@ -108,6 +118,7 @@ updateDisplay();
 
 function isGameOver(type = "lose") {
   gameRunning = false;
+  clearInterval(timerInterval);
   gameOver.style.display = "flex";
 
   const message =
@@ -116,9 +127,27 @@ function isGameOver(type = "lose") {
   gameOver.querySelector("h1").textContent = message;
 }
 
+// Timer function
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timeElapsed++;
+    const minutes = Math.floor(timeElapsed / 60);
+    const seconds = timeElapsed % 60;
+    timerElement.textContent = `${minutes}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  }, 1000);
+}
+
 function move(direction) {
   //check if game running
   if (!gameRunning) return;
+
+  //start timer on first move
+  if (!timerStarted) {
+    timerStarted = true;
+    startTimer();
+  }
 
   function getLine(i) {
     switch (direction) {

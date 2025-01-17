@@ -16,6 +16,17 @@ body {
   color: #fff;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -46,28 +57,43 @@ body {
   background: rgb(23, 233, 215);
 }
 .cell[data-value="16"] {
-  background: rgb(7, 136, 97);
+  background: rgb(198, 209, 42);
 }
 .cell[data-value="32"] {
-  background: rgb(212, 85, 27);
+  background: rgb(4, 71, 4);
 }
 .cell[data-value="64"] {
   background: rgb(212, 38, 119);
 }
 .cell[data-value="128"] {
-  background: rgb(150, 13, 13);
+  background: rgb(212, 85, 27);
 }
-.cell[data-value="255"] {
-  background: rgb(102, 101, 26);
+.cell[data-value="256"] {
+  background: rgb(95, 216, 71);
 }
 .cell[data-value="512"] {
-  background: rgb(14, 109, 14);
+  background: rgb(150, 13, 13);
 }
 .cell[data-value="1024"] {
   background: rgb(16, 17, 100);
 }
 .cell[data-value="2048"] {
-  background: rgb(244, 248, 29);
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
 }
 
 .game-over {
@@ -101,12 +127,22 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
-
-.music button {
+.top-menu {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 10px;
+}
+.top-menu button {
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
   font-weight: bold;
+  top: 0;
+  left: 0;
   padding: 10px 20px;
   font-size: 13px;
   margin: 10px;
@@ -114,7 +150,7 @@ body {
   border: none;
   border-radius: 5px;
 }
-.music button i {
+.top-menu button i {
   position: relative;
   font-size: 30px;
 }
