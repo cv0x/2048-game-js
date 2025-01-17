@@ -2,6 +2,10 @@ const board = document.getElementById("board");
 const score = document.getElementById("score");
 const gameOver = document.getElementById("gameOver");
 
+const playMusic = document.getElementById("music-btn-play");
+const pauseMusic = document.getElementById("music-btn-pause");
+const backgroundMusic = document.getElementById("backgroundMusic");
+
 let cells = Array(16).fill(0);
 let scoreValue = 0;
 let gameRunning = true;
@@ -185,4 +189,18 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     move(e.key);
   }
+});
+
+playMusic.addEventListener("click", () => {
+  backgroundMusic.play();
+  backgroundMusic.volume = 0.2;
+  playMusic.classList.add("hidden");
+  pauseMusic.classList.remove("hidden");
+});
+
+pauseMusic.addEventListener("click", () => {
+  backgroundMusic.pause();
+  backgroundMusic.volume = 0.2;
+  playMusic.classList.remove("hidden");
+  pauseMusic.classList.add("hidden");
 });

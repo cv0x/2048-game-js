@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>2048</title>
 </head>
 <body>
+    <div class="music">
+        <button id="music-btn-play"><i class='bx bx-play-circle'></i>Music</button>
+        <button class="hidden" id="music-btn-pause"><i class='bx bx-pause-circle' ></i>Music</button>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+    <source src="music/jpn lofi 1.mp3" type="audio/mpeg">
+    Váš prohlížeč nepodporuje přehrávání zvuku.
+  </audio>
+
     <div class="score">Score: <span id="score">0</span></div>
     <div class="board" id="board">
     </div>
