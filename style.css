@@ -69,3 +69,35 @@ body {
 .cell[data-value="2048"] {
   background: rgb(244, 248, 29);
 }
+
+.game-over {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 20px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(202, 2, 2, 0.5);
+}
+
+.game-over h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.restart-btn {
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: rgb(45, 45, 45);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}

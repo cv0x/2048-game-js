@@ -1,6 +1,10 @@
 const board = document.getElementById("board");
+const score = document.getElementById("score");
+const gameOver = document.getElementById("gameOver");
 
 let cells = Array(16).fill(0);
+let scoreValue = 0;
+let gameRunning = true;
 
 function initGrid(params) {
   board.innerHTML = "";
@@ -19,6 +23,63 @@ function updateDisplay() {
     tiles[index].textContent = value || "";
     tiles[index].setAttribute("data-value", value);
   });
+
+  score.textContent = scoreValue;
+}
+
+function checkGameOver() {
+  //if cells includes 0 game continue
+  if (cells.includes(0)) return false;
+
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 3; col++) {
+      const currentIndex = row * 4 + col;
+      const nextIndex = currentIndex + 1;
+
+      //if rows are equal game continue
+      if (cells[currentIndex] === cells[nextIndex]) {
+        return false;
+      }
+    }
+  }
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 4; col++) {
+      const currentIndex = row * 4 + col;
+      const nextIndex = currentIndex + 4;
+
+      //if columns are equal game continue
+      if (cells[currentIndex] === cells[nextIndex]) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+function checkWin() {
+  if (cells.includes(2048)) {
+    gameRunning = false;
+    gameOver.querySelector("h1").textContent = "YOU WIN!";
+    isGameOver("win");
+    return true;
+  }
+
+  return false;
+}
+
+function restartGame() {
+  gameRunning = true;
+  scoreValue = 0;
+  cells = Array(16).fill(0);
+
+  //reset ui
+  gameOver.style.display = "none";
+  score.textContent = "0";
+  initGrid();
+  addNewTile();
+  addNewTile();
+  updateDisplay();
 }
 
 function addNewTile() {
@@ -41,7 +102,20 @@ addNewTile();
 addNewTile();
 updateDisplay();
 
+function isGameOver(type = "lose") {
+  gameRunning = false;
+  gameOver.style.display = "flex";
+
+  const message =
+    type === "win" ? "YOU WIN!" : `YOU LOSE! \nScore: ${scoreValue}`;
+
+  gameOver.querySelector("h1").textContent = message;
+}
+
 function move(direction) {
+  //check if game running
+  if (!gameRunning) return;
+
   function getLine(i) {
     switch (direction) {
       //up to down
@@ -67,6 +141,7 @@ function move(direction) {
     for (let i = 0; i < result.length - 1; i++) {
       if (result[i] === result[i + 1]) {
         result[i] *= 2;
+        scoreValue += result[i];
         result.splice(i + 1, 1);
       }
     }
@@ -96,6 +171,12 @@ function move(direction) {
   if (moved) {
     addNewTile();
     updateDisplay();
+
+    if (!checkWin()) {
+      if (checkGameOver()) {
+        isGameOver("lose");
+      }
+    }
   }
 }
 
