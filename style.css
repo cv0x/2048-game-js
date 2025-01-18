@@ -16,6 +16,42 @@ body {
   color: #fff;
 }
 
+@keyframes colorChange {
+  0% {
+    color: rgb(57, 134, 211);
+  }
+  10% {
+    color: rgb(211, 46, 233);
+  }
+  20% {
+    color: rgb(23, 233, 215);
+  }
+  30% {
+    color: rgb(198, 209, 42);
+  }
+  40% {
+    color: rgb(4, 71, 4);
+  }
+  50% {
+    color: rgb(212, 38, 119);
+  }
+  60% {
+    color: rgb(212, 85, 27);
+  }
+  70% {
+    color: rgb(95, 216, 71);
+  }
+  80% {
+    color: rgb(150, 13, 13);
+  }
+  90% {
+    color: rgb(16, 17, 100);
+  }
+  100% {
+    color: rgb(57, 134, 211);
+  }
+}
+
 .title {
   display: flex;
   justify-content: center;
@@ -23,10 +59,13 @@ body {
   position: relative;
   font-size: 80px;
   font-weight: bold;
-  color: #fff;
   margin-bottom: 10px;
+  animation-name: colorChange;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  text-shadow: #fff 0 0 2px;
 }
-
 .board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
