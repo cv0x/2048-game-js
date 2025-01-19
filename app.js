@@ -214,9 +214,20 @@ function move(direction) {
 }
 
 document.addEventListener("keydown", (e) => {
-  if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+  const keyMapping = {
+    w: "ArrowUp",
+    s: "ArrowDown",
+    a: "ArrowLeft",
+    d: "ArrowRight",
+  };
+
+  //Convert W, S, A, D keys to arrow keys
+  const mappedKey = keyMapping[e.key.toLowerCase()] || e.key;
+
+  //Enabled keys: Arrows + WASD (mapped)
+  if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(mappedKey)) {
     e.preventDefault();
-    move(e.key);
+    move(mappedKey);
   }
 });
 
