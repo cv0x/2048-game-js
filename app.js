@@ -12,7 +12,7 @@ let cells = Array(16).fill(0);
 let scoreValue = 0;
 let gameRunning = true;
 
-let timerInterval = null;
+let timerInterval;
 let timeElapsed = 0;
 let timerStarted = false;
 

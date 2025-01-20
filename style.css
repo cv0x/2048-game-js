@@ -53,13 +53,25 @@ body {
 }
 
 .controls {
-  display: block;
+  display: inline;
   text-align: center;
   justify-content: center;
   align-items: center;
   position: relative;
-  gap: 10px;
+  line-height: 1.8;
   font-size: 15px;
+}
+.controls span {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  font-weight: bold;
+  border: #fff 2px solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 13px;
+  margin: 5px;
 }
 
 .title {
