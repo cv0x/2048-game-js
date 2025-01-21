@@ -156,6 +156,9 @@ document.getElementById("save-score").addEventListener("click", () => {
   savedScores.push({ name, scoreValue });
   localStorage.setItem("scores", JSON.stringify(savedScores));
   displayScores();
+
+  // Reset the input field
+  nameInput.value = "";
 });
 
 // Display saved scores
