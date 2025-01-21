@@ -11,10 +11,10 @@
     <div class="top-menu">
         <button id="music-btn-play"><i class='bx bx-play-circle'></i>Music</button>
         <button class="hidden" id="music-btn-pause"><i class='bx bx-pause-circle' ></i>Music</button>
-    
-        <div class="leaderboard">
-            <button id="leaderboard-btn"><i class='bx bx-list-ol'></i>Leaderboard</button>
-        </div>
+        <button id="leaderboard-btn"><i class='bx bx-list-ol'></i>Leaderboard</button>
+    </div>
+    <div id="leaderboard" class="hidden">
+        <ul id="score-list" ></ul>
     </div>
 
     <h1 class="title">2048</h1>
@@ -29,8 +29,6 @@
         <input type="text"  class="player-name" id="player-name" placeholder="Enter your name" maxlength="20"/>
         <button class="save-score-btn" id="save-score">Save Score</button>
         <button class="restart-btn" onclick="restartGame()"> Restart</button>
-        <h3>Leaderboard</h3>
-        <ul id="score-list"></ul>
     </div>
     <div class="controls">Use </br> <span><i class='bx bxs-up-arrow-alt'></i><i class='bx bxs-down-arrow-alt'></i><i class='bx bxs-left-arrow-alt'></i><i class='bx bxs-right-arrow-alt'></i></span> or <span> W S A D </span> </br>to move tiles</div>
      

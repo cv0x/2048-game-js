@@ -4,6 +4,9 @@ const gameOver = document.getElementById("gameOver");
 
 const timerElement = document.getElementById("timer");
 
+const toggleBtn = document.getElementById("leaderboard-btn");
+const toggleList = document.getElementById("leaderboard");
+
 const playMusic = document.getElementById("music-btn-play");
 const pauseMusic = document.getElementById("music-btn-pause");
 const backgroundMusic = document.getElementById("backgroundMusic");
@@ -287,6 +290,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+//Music
 playMusic.addEventListener("click", () => {
   backgroundMusic.play();
   backgroundMusic.volume = 0.2;
@@ -299,4 +303,9 @@ pauseMusic.addEventListener("click", () => {
   backgroundMusic.volume = 0.2;
   playMusic.classList.remove("hidden");
   pauseMusic.classList.add("hidden");
+});
+
+//Leaderboard toggle
+toggleBtn.addEventListener("click", () => {
+  toggleList.classList.toggle("hidden");
 });

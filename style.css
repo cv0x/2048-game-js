@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: context-menu;
 }
 
 body {
@@ -241,19 +242,18 @@ body {
 
 .top-menu {
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
   gap: 10px;
+  z-index: 3;
 }
 .top-menu button {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   font-weight: bold;
-  top: 0;
+  top: 10px;
   left: 0;
   padding: 10px 20px;
   font-size: 13px;
@@ -265,7 +265,42 @@ body {
 .top-menu button i {
   position: relative;
   font-size: 30px;
+  cursor: pointer;
 }
 button.hidden {
   display: none;
+}
+.hidden {
+  display: none;
+}
+
+#leaderboard {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  padding: 100%;
+  gap: 20px;
+  background: rgba(24, 21, 21, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 2;
+}
+
+#leaderboard ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  font-size: 18px;
+  padding: 50px 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 5px;
+  list-style: none;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  cursor: context-menu;
 }
