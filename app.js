@@ -121,11 +121,64 @@ function isGameOver(type = "lose") {
   clearInterval(timerInterval);
   gameOver.style.display = "flex";
 
-  const message =
-    type === "win" ? "YOU WIN!" : `YOU LOSE! \nScore: ${scoreValue}`;
+  const message = type === "win" ? "YOU WIN!" : `YOU LOSE!`;
 
   gameOver.querySelector("h1").textContent = message;
+
+  // Format timeElapsed to minutes and seconds
+  const minutes = Math.floor(timeElapsed / 60);
+  const seconds = timeElapsed % 60;
+  const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+  // Display the score and formatted time
+  document.getElementById("your-score").textContent = scoreValue;
+  document.getElementById("your-time").textContent = formattedTime;
 }
+
+// Save score to localStorage
+document.getElementById("save-score").addEventListener("click", () => {
+  const nameInput = document.getElementById("player-name");
+  const name = nameInput.value.trim();
+
+  // Check if the name contains only letters and numbers
+  const isValidName = /^[a-zA-Z0-9]+$/.test(name);
+  if (!isValidName) {
+    alert("Name can only contain letters and numbers.");
+    return;
+  }
+
+  if (!name) {
+    alert("Please enter a name.");
+    return;
+  }
+
+  const savedScores = JSON.parse(localStorage.getItem("scores")) || [];
+  savedScores.push({ name, scoreValue });
+  localStorage.setItem("scores", JSON.stringify(savedScores));
+  displayScores();
+});
+
+// Display saved scores
+function displayScores() {
+  const savedScores = JSON.parse(localStorage.getItem("scores")) || [];
+
+  // Sort scores in descending order
+  savedScores.sort((a, b) => b.scoreValue - a.scoreValue);
+
+  // Take the top 15 scores
+  const topScores = savedScores.slice(0, 15);
+
+  const scoreList = document.getElementById("score-list");
+  scoreList.innerHTML = savedScores
+    .map(
+      (entry, index) =>
+        `<li>${index + 1}. ${entry.scoreValue} - ${entry.name} 
+         </li>`
+    )
+    .join("");
+}
+
+displayScores();
 
 // Timer function
 function startTimer() {
