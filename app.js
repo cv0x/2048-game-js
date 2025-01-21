@@ -172,7 +172,7 @@ function displayScores() {
   const topScores = savedScores.slice(0, 15);
 
   const scoreList = document.getElementById("score-list");
-  scoreList.innerHTML = savedScores
+  scoreList.innerHTML = topScores
     .map(
       (entry, index) =>
         `<li>${index + 1}. ${entry.scoreValue} - ${entry.name} 

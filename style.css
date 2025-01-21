@@ -187,15 +187,17 @@ body {
 }
 
 .game-over h3 {
-  padding: 0;
+  padding: 10px 50px;
+  border-radius: 10px;
+  background-color: rgba(54, 4, 4, 0.3);
 }
 
 .game-over ul {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
+  align-items: flex-start;
   position: relative;
+  font-size: 18px;
   gap: 5px;
   list-style: none;
   color: #fff;
