@@ -93,6 +93,10 @@ function restartGame() {
   gameOver.style.display = "none";
   score.textContent = "0";
   timerElement.textContent = "0:00";
+
+  document.getElementById("player-name").classList.remove("hidden");
+  document.getElementById("save-score").classList.remove("hidden");
+
   initGrid();
   addNewTile();
   addNewTile();
@@ -124,6 +128,10 @@ function isGameOver(type = "lose") {
   clearInterval(timerInterval);
   gameOver.style.display = "flex";
 
+  // Display the player name input and save score button
+  document.getElementById("player-name").classList.remove("hidden");
+  document.getElementById("save-score").classList.remove("hidden");
+
   const message = type === "win" ? "YOU WIN!" : `YOU LOSE!`;
 
   gameOver.querySelector("h1").textContent = message;
@@ -141,7 +149,11 @@ function isGameOver(type = "lose") {
 // Save score to localStorage
 document.getElementById("save-score").addEventListener("click", () => {
   const nameInput = document.getElementById("player-name");
+  const saveButton = document.getElementById("save-score");
   const name = nameInput.value.trim();
+
+  nameInput.classList.add("hidden");
+  saveButton.classList.add("hidden");
 
   // Check if the name contains only letters and numbers
   const isValidName = /^[a-zA-Z0-9]+$/.test(name);

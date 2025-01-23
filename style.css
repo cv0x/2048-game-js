@@ -271,7 +271,7 @@ button.hidden {
   display: none;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #leaderboard {
