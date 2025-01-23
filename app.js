@@ -280,6 +280,11 @@ document.addEventListener("keydown", (e) => {
     d: "ArrowRight",
   };
 
+  // allow W, S, A, D keys i name input
+  if (e.target.id === "player-name") {
+    return;
+  }
+
   //Convert W, S, A, D keys to arrow keys
   const mappedKey = keyMapping[e.key.toLowerCase()] || e.key;
 
