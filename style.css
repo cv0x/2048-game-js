@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: 60px;
   flex-direction: column;
   gap: 20px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -91,21 +92,29 @@ body {
 .board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-  padding: 10px;
-  border-radius: 10px;
-  background: rgb(45, 45, 45);
+  gap: 8px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(45, 45, 45, 0.9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .cell {
+  width: 90px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
-  background: rgb(40, 40, 40);
-  font-size: 35px;
+  font-size: 2rem;
   font-weight: bold;
+  border-radius: 8px;
+  background: rgba(40, 40, 40, 0.9);
+  transition: transform 0.1s ease, background 0.3s ease;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  z-index: 2;
 }
 
 .cell[data-value="2"] {
@@ -243,29 +252,40 @@ body {
 .top-menu {
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   gap: 10px;
+  padding: 0;
+  background-color: rgba(51, 51, 51, 0.9);
   z-index: 3;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
 .top-menu button {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   position: relative;
   font-weight: bold;
-  top: 10px;
-  left: 0;
   padding: 10px 20px;
   font-size: 13px;
   margin: 10px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  height: 60px;
+  width: 120px;
+  min-width: 100px;
+
+  white-space: nowrap;
 }
 .top-menu button i {
-  position: relative;
-  font-size: 30px;
-  cursor: pointer;
+  font-size: 24px;
+  margin-bottom: 5px;
 }
 button.hidden {
   display: none;
@@ -275,16 +295,20 @@ button.hidden {
 }
 
 #leaderboard {
-  flex-direction: column;
-  justify-content: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
   position: fixed;
-  padding: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   gap: 20px;
   background: rgba(24, 21, 21, 0.5);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 2;
+  overflow: auto;
 }
 
 #leaderboard ul {
@@ -301,6 +325,20 @@ button.hidden {
   list-style: none;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   cursor: context-menu;
+}
+#leaderboard h2 {
+  position: absolute;
+  top: 10%;
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding-bottom: 10px;
 }
